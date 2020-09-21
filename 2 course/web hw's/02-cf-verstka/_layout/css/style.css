@@ -92,7 +92,7 @@ header nav form.search input {
     padding: 1px 1px 1px 1.5rem;
     font-size: 12px;
     line-height: 18px;
-    background: #f4f4f4 url(../img/search-16x16.png) 2px 2px no-repeat;
+    background: #f4f4f4 url(img/search-16x16.png) 2px 2px no-repeat;
 }
 
 header nav form.search input:focus {
@@ -154,7 +154,7 @@ main article ul li {
 }
 
 main article ul.attachment li:before {
-    content: url("../img/paperclip-16x16.png");
+    content: url("img/paperclip-16x16.png");
     position: absolute;
     top: 0;
     left: 0;
