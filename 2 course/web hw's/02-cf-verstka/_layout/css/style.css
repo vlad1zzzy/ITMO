@@ -1,0 +1,347 @@
+:root {
+    --border-color: rgb(185, 185, 185);
+    --border-radius: 6px;
+    --black-color: #333;
+    --caption-color: #3B5998;
+    --table-grey-color: rgb(230, 230, 230);
+    color: var(--black-color);
+    font-family: Verdana, sans-serif;
+    font-size: 14px;
+}
+
+html {
+    padding: 1rem 3rem;
+    min-width: 920px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+    :root {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 800px) {
+    :root {
+        font-size: 12px;
+    }
+}
+
+/*---------------------Header---------------------*/
+header {
+    position: relative;
+}
+
+header .languages {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+header .enter-or-register-box {
+    position: absolute;
+    top: 32px;
+    right: 0;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 0.75rem 0.25rem;
+    margin-top: 1rem;
+}
+
+header nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin-left: 1rem;
+}
+
+header nav ul li.active {
+    border-bottom: cornflowerblue solid 3px;
+    transition: border-bottom-width 0.3s linear;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: var(--black-color);
+    font-family: "Arial Narrow", sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+header nav ul li a:hover {
+    color: var(--caption-color);
+}
+
+header nav form.search {
+    margin-right: 0.4rem;
+}
+
+header nav form.search input {
+    max-width: 10rem;
+    border: 1px solid var(--border-color);
+    padding: 1px 1px 1px 1.5rem;
+    font-size: 12px;
+    line-height: 18px;
+    background: #f4f4f4 url(../img/search-16x16.png) 2px 2px no-repeat;
+}
+
+header nav form.search input:focus {
+    outline-color: cornflowerblue;
+}
+
+.middle {
+    margin-top: 1rem;
+    overflow: auto;
+}
+
+aside {
+    float: right;
+    width: 20rem;
+}
+
+main {
+    margin-right: 21rem;
+}
+
+/*---------------------Main Article---------------------*/
+main article {
+    margin: 0.3rem auto 0.7rem;
+}
+
+main article .title {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 30px;
+    color: var(--caption-color);
+}
+
+main article .title:hover {
+    cursor: pointer;
+}
+
+main article .information {
+    color: gray;
+}
+
+main article .body {
+    padding-left: 0.6rem;
+    border-left: darkgray solid 4px;
+}
+
+main article ul {
+    list-style-type: none;
+    margin-top: -6px;
+    padding-left: 0;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+main article ul li {
+    position: relative;
+    padding-left: 20px;
+    padding-bottom: 2px;
+    color: gray;
+}
+
+main article ul.attachment li:before {
+    content: url("../img/paperclip-16x16.png");
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+main article .footer {
+    border: var(--border-color) solid 2px;
+    border-radius: 5px;
+    padding: 0.3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main article .footer .left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main article .footer .left .positive-score {
+    color: green;
+    font-weight: 800;
+    font-size: larger;
+    position: relative;
+    margin: 0 0.3rem;
+}
+
+main article .footer .right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main article .footer .right img {
+    margin: 0 0.3rem;
+}
+
+/*---------------------Main Table---------------------*/
+main .datatable {
+    font-size: 12px;
+}
+
+main .caption {
+    color: dimgrey;
+    line-height: 1.3rem;
+    background-color: var(--table-grey-color);
+    border: var(--table-grey-color) solid 2px;
+    border-radius: 5px 5px 0 0;
+    padding-left: 0.3rem;
+}
+
+main table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+main table tr th, td {
+    max-width: 10rem;
+    overflow: hidden;
+    border: var(--table-grey-color) solid 2px;
+    padding: 0.4rem;
+}
+
+main table tbody tr:nth-child(2n-1) {
+    background-color: whitesmoke;
+}
+
+main table tbody tr td:nth-child(3) {
+    cursor: pointer;
+}
+
+/*---------------------Register---------------------*/
+main .login-form-box {
+    border: var(--border-color) solid 1px;
+    border-radius: 5px 5px 0 0;
+    margin: 0 auto;
+    max-width: 45%;
+}
+
+main .header {
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 20px;
+    color: var(--caption-color);
+    padding-left: 0.7rem;
+    padding-bottom: 0.3rem;
+}
+
+main .body form {
+    outline: var(--border-color) solid 1px;
+    text-align: center;
+}
+
+main form .field {
+    padding-top: 1.7rem;
+    padding-right: 16%;
+    text-align: right;
+}
+
+main form .field .name {
+    display: inline;
+    margin-right: 0.3rem;
+}
+
+main form .field .value {
+    display: inline;
+}
+
+main form .field .value input:focus {
+    outline-color: cornflowerblue;
+}
+
+main form .field .error {
+    color: red;
+    font-size: 12px;
+    padding-right: 8%;
+}
+
+main form .checkbox-field {
+    font-size: 12px;
+    margin: 1rem auto;
+}
+
+main form .button-field input {
+    padding: 0 1.4rem;
+}
+
+main form .links {
+    font-size: 12px;
+    text-align: right;
+    padding-right: 0.2rem;
+    padding-bottom: 0.2rem;
+}
+
+main .login-form-box .footer {
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 12px;
+}
+
+main .login-form-box .footer a {
+    padding: 0.2rem 0.3rem;
+}
+
+/*---------------------RightSide Section---------------------*/
+aside section {
+    border: 1px solid var(--border-color);
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+}
+
+aside section .header {
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.25rem;
+    font-weight: bold;
+    color: var(--caption-color);
+}
+
+aside section .header:before {
+    content: "→";
+}
+
+aside section .body {
+    padding: 1rem;
+}
+
+aside section .footer {
+    border-top: 1px solid var(--border-color);
+    overflow: auto;
+    padding: 0.25rem;
+}
+
+aside section .footer a {
+    float: right;
+    font-size: 0.75rem;
+}
+
+aside section .footer a:after {
+    content: " →";
+}
+
+/*---------------------Footer---------------------*/
+footer {
+    margin-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 0.5rem;
+    text-align: center;
+}
