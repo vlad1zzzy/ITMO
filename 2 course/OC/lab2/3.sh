@@ -1,2 +1,3 @@
 #!/bin/bash
-ps o pid,start | sort -k2 -n | tail -1 | awk '{print $1}'
+
+ps axo pid,start,cmd | tail -5 | head -1
