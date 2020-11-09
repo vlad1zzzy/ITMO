@@ -1,0 +1,27 @@
+#!/bin/bash
+
+name=$1
+
+while read -u 3 line
+do
+	fullname=$(echo $line | awk -e '$3 ~ /\/'"$name"'$/ {print $3}')
+	link=$(echo $line | awk -e '$3 ~ /\/'"$name"'$/ {print $6}')
+	if [[ $fullname ]]; then
+		read -p "Untrash file $fullname? (y/n) : " ans
+		if [[ $ans == "y" ]]; then
+			path=${fullname%/*}
+			if [[ -d $path ]]; then
+				ln ~/.trash/$link $fullname
+			else
+				echo "Dir is not exist"
+				ln ~/.trash/$link ~/$name
+			fi
+			rm ~/.trash/$link
+		else
+			if [[ $ans != "n" ]]; then
+				echo "Ivalid input"
+				exit 1
+			fi
+		fi
+	fi
+done 3< ~/.trash.log

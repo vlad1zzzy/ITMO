@@ -1,0 +1,23 @@
+#!/bin/bash
+
+name=$1
+if [[ ! $(find ~/lab4/ -maxdepth 1 -type f -iname "$name") ]]; then
+	echo "File does not exist"
+	exit 0
+fi
+
+if [[ ! $(find ~/ -maxdepth 1 -type d -name ".trash") ]]; then
+	mkdir ~/.trash
+	touch ~/index
+	echo 0 > ~/index
+fi
+
+index=$(cat ~/index)
+
+ln $name ~/.trash/$index
+rm $name
+
+echo "File : $PWD/$name   Link : $index" >> ~/.trash.log
+
+(( index++ ))
+echo $index > ~/index
