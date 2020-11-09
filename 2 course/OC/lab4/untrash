@@ -11,12 +11,19 @@ do
 		if [[ $ans == "y" ]]; then
 			path=${fullname%/*}
 			if [[ -d $path ]]; then
-				ln ~/.trash/$link $fullname
+				while [[ -f $path/$name ]]; do
+					read -p "File alread exist. Enter new : " name
+				done
+				ln ~/.trash/$link $path/$name
 			else
+				while [[ -f ~/$name ]]; do
+					read -p "File alread exist. Enter new : " name
+				done
 				echo "Dir is not exist"
 				ln ~/.trash/$link ~/$name
 			fi
 			rm ~/.trash/$link
+			sed -i "\|$line|d" ~/.trash.log
 		else
 			if [[ $ans != "n" ]]; then
 				echo "Ivalid input"
