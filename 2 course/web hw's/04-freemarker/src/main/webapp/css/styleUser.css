@@ -1,0 +1,43 @@
+.info {
+    display: flex;
+    justify-content: space-between;
+    border: var(--boder);
+    border-radius: var(--border-radius);
+    padding: 0.2rem;
+}
+
+.user-info {
+}
+
+.user-info .name {
+    font-size: 1.4rem;
+    margin: 0.3rem;
+}
+
+.user-info ul {
+    padding-left: 2rem;
+}
+
+.user-info img {
+    float: right;
+    border-radius: var(--border-radius);
+}
+
+.arrows a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    padding-left: 0.3rem;
+}
+
+.arrows a.disabled {
+    pointer-events: none;
+    cursor: default;
+    color: #888;
+}
+
+.arrows .left{
+
+}
+
+.arrows .right {
+}

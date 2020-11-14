@@ -1,0 +1,31 @@
+.datatable {
+    --table-grey-color: rgb(230, 230, 230);
+    font-size: 0.8rem;
+}
+
+.caption {
+    font-size: 1rem;
+    color: dimgrey;
+    line-height: 1.3rem;
+    background-color: var(--table-grey-color);
+    border: var(--table-grey-color) solid 2px;
+    border-radius: 5px 5px 0 0;
+    padding-left: 0.3rem;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+table tr th, td {
+    max-width: 10rem;
+    overflow: hidden;
+    border: var(--table-grey-color) solid 2px;
+    padding: 0.4rem;
+}
+
+table tbody tr:nth-child(2n-1) {
+    background-color: whitesmoke;
+}

@@ -1,0 +1,79 @@
+article {
+    margin: 0 auto 1rem;
+}
+
+article .title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 2.1rem;
+    color: var(--caption-color);
+}
+
+article .title:hover {
+    cursor: pointer;
+}
+
+article .information {
+    color: gray;
+}
+
+article .body_post {
+    padding-left: 0.6rem;
+    border-left: darkgray solid 4px;
+    margin: 0 0 1rem;
+}
+
+article ul {
+    list-style-type: none;
+    margin-top: -0.4rem;
+    padding-left: 0;
+    font-size: 0.8rem;
+    line-height: 1.2rem;
+}
+
+article ul li {
+    position: relative;
+    padding-left: 1.4rem;
+    padding-bottom: 0.14rem;
+    color: gray;
+}
+
+article ul.attachment li:before {
+    content: url("../img/paperclip-16x16.png");
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+article .footer {
+    border: var(--border-color) solid 2px;
+    border-radius: 5px;
+    padding: 0.3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+article .footer .left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+article .footer .left .positive-score {
+    color: green;
+    font-weight: 800;
+    font-size: larger;
+    position: relative;
+    margin: 0 0.3rem;
+}
+
+article .footer .right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+article .footer .right img {
+    margin: 0 0.3rem;
+}
