@@ -6,7 +6,7 @@
 * [Programming paradigms](https://github.com/vlad1zzzy/ITMO/tree/master/1%20course/programming-paradigms)
 
 # ITMO 2nd course:
-* [Algorithms and Data Structures](#)
+* [Algorithms and Data Structures](https://github.com/vlad1zzzy/ITMO/tree/master/2%20course/Algo)
 * [Discrete Math](#)
 * [WEB homeworks](https://github.com/vlad1zzzy/ITMO/tree/master/2%20course/web%20hw's)
 * [OC](https://github.com/vlad1zzzy/ITMO/tree/master/2%20course/OC)
