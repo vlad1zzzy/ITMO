@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [[ ! -d ~/restore ]]; then
+	mkdir ~/restore
+fi
+
+backup=$(ls /home/vlad1zzzy/ | grep -E "Backup-[0-9]{4}-[0-9]{2}-[0-9]{2}" | sort -r -k2 | head -1)
+
+for file in $(ls ~/$backup); do
+	if [[ -z "$(echo $file | grep -E "*.[0-9]{4}-[0-9]{2}-[0-9]{2}")" ]]; then
+		cp ~/$backup/$file ~/restore/$file
+	fi
+done

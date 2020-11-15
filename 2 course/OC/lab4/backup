@@ -1,0 +1,41 @@
+#!/bin/bash
+
+Date=$(date +"%Y-%m-%d")
+lastBackup=$(ls /home/vlad1zzzy/ | grep -E "Backup-[0-9]{4}-[0-9]{2}-[0-9]{2}")
+
+if [[ -z $lastBackup ]]; then
+	lastDate=0
+else
+	lastDate=$(date --date=$(echo $lastBackup | sed "s/^Backup-//") "+%s")
+	lastDateYMD=$(echo $lastBackup | sed "s/^Backup-//")
+fi
+
+let dif=($(date "+%s")\-$lastDate)/24/60/60
+if [[ $dif -ge 7 ]]; then
+	backup="/home/vlad1zzzy/Backup-$Date"
+	mkdir $backup
+	echo -e -n "Created new backpup\nName  : $backup\nDate  : $Date\nFiles : " > ~/backup-report
+	for file in $(ls ~/source/); do
+		cp ~/source/$file $backup/$file
+		echo -n "$file; " >> ~/backup-report
+	done
+	echo "" >> ~/backup-report
+else
+	backup=$lastBackup
+	Date=$lastDateYMD
+	echo -e "Update last backup\nName : $backup\nDate : $Date" >> ~/backup-report
+	for file in $(ls ~/source/); do
+		copyFile=~/$backup/$file
+		if [[ -f $copyFile ]]; then
+			if [[ "$(wc -c $copyFile | cut -d' ' -f1)" != "$(wc -c ~/source/$file | cut -d' ' -f1)" ]]; then
+				mv $copyFile $copyFile"."$Date
+				cp ~/source/$file $copyFile
+				echo -e "Created new version of file : $file" >> ~/backup-report
+			fi
+		else
+			cp ~/source/$file $copyFile
+			echo "Coppied file : $file" >> ~/backup-report
+		fi
+	done
+fi
+echo -e "----------------------" >> ~/backup-report
