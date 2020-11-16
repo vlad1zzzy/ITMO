@@ -1,12 +1,23 @@
 #!/bin/bash
 
-name=$1
+if [[ ! $(find ~/ -maxdepth 1 -type d -name ".trash") ]]; then
+	echo "Trash bin is does not exist"
+	exit 1
+fi
 
+if [[ $# -ne 1 ]]; then
+	echo "Must be only one parameter - filename"
+	exit 1
+fi
+
+name=$1
+visited="false"
 while read -u 3 line
 do
 	fullname=$(echo $line | awk -e '$3 ~ /\/'"$name"'$/ {print $3}')
 	link=$(echo $line | awk -e '$3 ~ /\/'"$name"'$/ {print $6}')
 	if [[ $fullname ]]; then
+		visited=true
 		read -p "Untrash file $fullname? (y/n) : " ans
 		if [[ $ans == "y" ]]; then
 			path=${fullname%/*}
@@ -17,7 +28,7 @@ do
 				ln ~/.trash/$link $path/$name
 			else
 				while [[ -f ~/$name ]]; do
-					read -p "File alread exist. Enter new : " name
+					read -p "File alread exist. Enter new name : " name
 				done
 				echo "Dir is not exist"
 				ln ~/.trash/$link ~/$name
@@ -32,3 +43,13 @@ do
 		fi
 	fi
 done 3< ~/.trash.log
+
+if [[ $visited == "false" ]]; then
+	echo "Can't find file - $name"
+fi
+
+if [[ -z "$(ls -A ~/.trash)" ]]; then
+	echo 0 > ~/index
+fi
+
+

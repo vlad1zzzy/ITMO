@@ -1,20 +1,27 @@
 #!/bin/bash
 
-Date=$(date +"%Y-%m-%d")
-lastBackup=$(ls /home/vlad1zzzy/ | grep -E "Backup-[0-9]{4}-[0-9]{2}-[0-9]{2}")
-
-if [[ -z $lastBackup ]]; then
-	lastDate=0
-else
-	lastDate=$(date --date=$(echo $lastBackup | sed "s/^Backup-//") "+%s")
-	lastDateYMD=$(echo $lastBackup | sed "s/^Backup-//")
+if [[ ! $(find ~/ -maxdepth 1 -type d -name "source") ]]; then
+	echo "Source dir does not exist"
+	exit 1
 fi
 
-let dif=($(date "+%s")\-$lastDate)/24/60/60
+Date=$(date +"%Y-%m-%d")
+lastBackup=$(ls /home/vlad1zzzy/ | grep -E "Backup-[0-9]{4}-[0-9]{2}-[0-9]{2}" | sort -r -k2 | head -1)
+
+if [[ -z $lastBackup ]]; then
+	lastDate=$(dateadd $Date -36500d)
+else
+	lastDate=$(echo $lastBackup | sed "s/^Backup-//")
+fi
+
+echo "Date : $Date Previous date : $lastDate"
+dif=$(datediff $lastDate $Date)
+echo "Difference : $dif"
+
 if [[ $dif -ge 7 ]]; then
 	backup="/home/vlad1zzzy/Backup-$Date"
 	mkdir $backup
-	echo -e -n "Created new backpup\nName  : $backup\nDate  : $Date\nFiles : " > ~/backup-report
+	echo -e -n "Created new backpup\nName  : $backup\nDate  : $Date\nFiles : " >> ~/backup-report
 	for file in $(ls ~/source/); do
 		cp ~/source/$file $backup/$file
 		echo -n "$file; " >> ~/backup-report
@@ -22,7 +29,7 @@ if [[ $dif -ge 7 ]]; then
 	echo "" >> ~/backup-report
 else
 	backup=$lastBackup
-	Date=$lastDateYMD
+	Date=$lastDate
 	echo -e "Update last backup\nName : $backup\nDate : $Date" >> ~/backup-report
 	for file in $(ls ~/source/); do
 		copyFile=~/$backup/$file
