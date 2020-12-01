@@ -27,7 +27,7 @@ public class UserService {
 
     public void updateDisable(DisableForm disableForm) {
         User user = userRepository.findById(disableForm.getUserId()).orElse(null);
-        if (user != null) {
+        if (user != null && disableForm.isDisabled() != user.isDisabled()) {
             userRepository.updateDisable(disableForm.getUserId(), disableForm.isDisabled());
         }
     }

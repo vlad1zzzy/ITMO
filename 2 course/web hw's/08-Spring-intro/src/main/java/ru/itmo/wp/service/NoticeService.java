@@ -2,7 +2,6 @@ package ru.itmo.wp.service;
 
 import org.springframework.stereotype.Service;
 import ru.itmo.wp.domain.Notice;
-import ru.itmo.wp.form.NoticeForm;
 import ru.itmo.wp.repository.NoticeRepository;
 
 import java.util.List;
@@ -15,11 +14,9 @@ public class NoticeService {
         this.noticeRepository = noticeRepository;
     }
 
-    public Notice create(NoticeForm noticeForm) {
-        Notice notice = new Notice();
-        notice.setContent(noticeForm.getContent());
+    public void create(Notice notice) {
+        notice.setContent(notice.getContent());
         noticeRepository.save(notice);
-        return notice;
     }
 
     public Notice findById(Long id) {

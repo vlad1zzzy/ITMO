@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import ru.itmo.wp.service.UserService;
 
 @Controller
@@ -20,7 +19,7 @@ public class UserPage extends Page {
         try {
             long userId = Long.parseLong(id);
             model.addAttribute("userData", userService.findById(userId));
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             // No operations
         }
         return "UserPage";

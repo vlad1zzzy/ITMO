@@ -1,6 +1,5 @@
 <#-- @ftlvariable name="notice" type="ru.itmo.wp.domain.Notice" -->
 <#-- @ftlvariable name="error" type="java.lang.String" -->
-<#-- @ftlvariable name="noticeForm" type="ru.itmo.wp.form.NoticeForm" -->
 
 <#import "/spring.ftl" as spring>
 <#import "commons.ftlh" as c>
@@ -16,10 +15,10 @@
                         <label for="content">Content: </label>
                     </div>
                     <div class="value">
-                        <textarea name="content" id="content" cols="24" rows="10">${noticeForm.content!}</textarea>
+                        <textarea name="content" id="content" cols="24" rows="10">${notice.content!}</textarea>
                     </div>
+                    <@c.error "notice.content"/>
                 </div>
-                <@c.error "noticeForm.content"/>
                 <div class="button-field">
                     <input type="submit" value="Create">
                 </div>

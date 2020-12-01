@@ -5,6 +5,8 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -15,7 +17,8 @@ public class Notice {
     @Id @GeneratedValue
     private long id;
 
-    @Lob @Type(type = "org.hibernate.type.TextType") @NotEmpty
+    @Lob @Type(type = "org.hibernate.type.TextType") @NotEmpty @NotNull
+    @Size(min = 1, max = 100)
     private String content;
 
     @CreationTimestamp

@@ -5,8 +5,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.itmo.wp.domain.Notice;
-import ru.itmo.wp.domain.User;
-import ru.itmo.wp.form.NoticeForm;
 import ru.itmo.wp.service.NoticeService;
 
 import javax.servlet.http.HttpSession;
@@ -29,19 +27,19 @@ public class NoticePage extends Page {
             putMessage(httpSession, "You must be logged!");
             return "redirect:";
         }
-        model.addAttribute("noticeForm", new NoticeForm());
+        model.addAttribute("notice", new Notice());
         return "NoticePage";
     }
 
     @PostMapping("/notice")
-    public String create(@Valid @ModelAttribute("noticeForm") NoticeForm noticeForm,
+    public String create(@Valid @ModelAttribute("notice") Notice notice,
                          BindingResult bindingResult,
                          HttpSession httpSession) {
         if (bindingResult.hasErrors()) {
             return "NoticePage";
         }
 
-        Notice notice = noticeService.create(noticeForm);
+        noticeService.create(notice);
         putMessage(httpSession, "Notice "
                 + notice.getContent().substring(0, min(notice.getContent().length(), 10))
                 + "... successfully created!"

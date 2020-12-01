@@ -31,8 +31,9 @@ public class UsersPage extends Page {
     public String changeStatus(@Valid @ModelAttribute("disableForm") DisableForm disableForm,
                           BindingResult bindingResult,
                           HttpSession httpSession) {
-        if (bindingResult.hasErrors()) {
-            return "UsersPage";
+        if (bindingResult.hasErrors() || getUser(httpSession) == null) {
+            putMessage(httpSession, "Something goes wrong");
+            return "IndexPage";
         }
 
         userService.updateDisable(disableForm);

@@ -20,9 +20,15 @@ public class Page {
     @Autowired
     private NoticeService noticeService;
 
+
     @ModelAttribute("user")
     public User getUser(HttpSession httpSession) {
-        return userService.findById((Long) httpSession.getAttribute(USER_ID_SESSION_KEY));
+        User user = userService.findById((Long) httpSession.getAttribute(USER_ID_SESSION_KEY));
+        if (user != null && user.isDisabled()) {
+            unsetUser(httpSession);
+            putMessage(httpSession, "You was disabled");
+        }
+        return user;
     }
 
     @ModelAttribute("message")

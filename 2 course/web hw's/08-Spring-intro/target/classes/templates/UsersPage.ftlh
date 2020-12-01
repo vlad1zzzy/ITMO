@@ -1,3 +1,4 @@
+<#-- @ftlvariable name="user" type="ru.itmo.wp.domain.User" -->
 <#-- @ftlvariable name="users" type="ru.itmo.wp.domain.User[]" -->
 <#import "commons.ftlh" as c>
 
@@ -10,7 +11,7 @@
                 <th>Id</th>
                 <th>Login</th>
                 <th>Created</th>
-                <th>Status</th>
+                <#if user?? && !user.disabled><th>Status</th></#if>
             </tr>
             </thead>
             <tbody>
@@ -21,23 +22,29 @@
                     </td>
                 </tr>
             <#else>
-                <#list users as user>
+                <#list users as u>
                     <tr>
-                        <td class="id"><a href="/user/${user.id}">${user.id}</a></td>
-                        <td class="login">${user.login}</td>
-                        <td class="creationTime">${user.creationTime}</td>
-                        <td class="status">
-                            <form method="post" action="">
-                                <input type="hidden" name="userId" value="${user.id}"/>
-                                <#if user.disabled>
-                                    <input type="hidden" name="disabled" value="false">
-                                    <input type="submit" class="disabled" value="Enable">
+                        <td class="id"><a href="/user/${u.id}">${u.id}</a></td>
+                        <td class="login">${u.login}</td>
+                        <td class="creationTime">${u.creationTime}</td>
+                        <#if user?? && !user.disabled>
+                            <td class="status">
+                                <#if user.login != u.login>
+                                    <form method="post" action="">
+                                        <input type="hidden" name="userId" value="${u.id}"/>
+                                        <#if u.disabled>
+                                            <input type="hidden" name="disabled" value="false">
+                                            <input type="submit" class="disabled" value="Enable">
+                                        <#else>
+                                            <input type="hidden" name="disabled" value="true">
+                                            <input type="submit" class="enabled" value="Disable">
+                                        </#if>
+                                    </form>
                                 <#else>
-                                    <input type="hidden" name="disabled" value="true">
-                                    <input type="submit" class="enabled" value="Disable">
+                                    <div>You</div>
                                 </#if>
-                            </form>
-                        </td>
+                            </td>
+                        </#if>
                     </tr>
                 </#list>
             </#if>
