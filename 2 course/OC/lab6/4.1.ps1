@@ -1,0 +1,1 @@
+﻿driverquery > DRIVERS.txt

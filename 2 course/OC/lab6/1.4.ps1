@@ -1,0 +1,1 @@
+ls -file TEST | sort LastWriteTime -d | Select -Skip 1 | rm

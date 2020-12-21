@@ -1,0 +1,2 @@
+﻿#PowerShell.exe -WindowStyle hidden { while(1) { ps | sort -desc cpu | select -First 30 | findstr 'Robocopy' }}
+while(1) { if(Get-Process -Name Robocopy -ErrorAction SilentlyContinue) { echo "Found"; foreach($i in 1..70) {$i};Stop-Process -Name "Robocopy" -Force; echo "Killed"; break} }

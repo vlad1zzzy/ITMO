@@ -1,0 +1,14 @@
+Get-Service | findstr Running > service.txt
+#Get-Service -Name Dnscache | Stop-Service
+#REG add "HKLM\SYSTEM\CurrentControlSet\services\Dnscache" /v Stop /t REG_DWORD /d 4 /f
+#tyt ostanovka DNS-Client, kotoraya ne rabotaet
+
+$time = (Get-Date).AddMinutes(1).ToString("HH:mm")
+SchTasks.exe /F /Create /SC ONCE /ST $time  /TN "GetService" /TR "powershell -command &{Get-Service | findstr Running > C:\LAB6\service.upd.txt}"
+
+#Start-Sleep -Seconds 5
+#Get-Service | findstr Running > service.upd.txt
+Compare-Object (Get-Content service.txt) (Get-Content service.upd.txt) > compare.txt
+Start-Service -Name Dnscache
+$content = Get-Content -Path .\3.*.ps1
+Set-Content -Path .\commands3.txt -Value $content

@@ -1,0 +1,25 @@
+systeminfo | findstr /b /c:"OS Version" > 1.1.systeminfo.txt
+systeminfo | findstr /c:"Memory" >> 1.1.systeminfo.txt
+Get-WmiObject -Class Win32_LogicalDisk > 1.1.wmic.txt
+OS Version:                10.0.17763 N/A Build 17763
+Total Physical Memory:     4,096 MB
+Available Physical Memory: 2,351 MB
+Virtual Memory: Max Size:  5,504 MB
+Virtual Memory: Available: 3,439 MB
+Virtual Memory: In Use:    2,065 MB
+
+
+DeviceID     : C:
+DriveType    : 3
+ProviderName : 
+FreeSpace    : 23771279360
+Size         : 42947571712
+VolumeName   : Windows 10
+
+
+
+New-Item -ItemType Directory -Force -Path .\TEST
+Copy-Item .\*.* .\TEST
+$content = Get-Content -Path .\TEST\*
+Set-Content -Path .\TEST\copyTEST.txt -Value $content
+ls -file TEST | sort LastWriteTime -d | Select -Skip 1 | rm

@@ -1,0 +1,10 @@
+systeminfo | findstr /b /c:"OS Version" > 1.1.systeminfo.txt
+systeminfo | findstr /c:"Memory" >> 1.1.systeminfo.txt
+Get-WmiObject -Class Win32_LogicalDisk > 1.1.wmic.txt
+New-Item -ItemType Directory -Force -Path .\TEST
+Copy-Item .\*.* .\TEST
+$content = Get-Content -Path .\TEST\*
+Set-Content -Path .\TEST\copyTEST.txt -Value $content
+ls -file TEST | sort LastWriteTime -d | Select -Skip 1 | rm
+$content = Get-Content -Path .\1.*.ps1
+Set-Content -Path .\commands.txt -Value $content

@@ -1,0 +1,1 @@
+﻿Get-Content DRIVERS.txt | Sort-Object | Out-File DRIVERS_SORTED.txt
