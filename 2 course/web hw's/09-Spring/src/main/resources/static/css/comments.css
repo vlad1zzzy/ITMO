@@ -1,0 +1,10 @@
+.comments li {
+    text-decoration: none;
+    margin: 0.5rem;
+}
+.comments .user {
+    color: red;
+}
+.comments .creationTime {
+    font-size: 0.6rem;
+}
