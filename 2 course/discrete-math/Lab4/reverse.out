@@ -1,0 +1,33 @@
+start: find_end
+accept: ac
+reject: rj
+blank: _
+
+find_end 0 -> find_end 0 >
+find_end 1 -> find_end 1 >
+find_end _ -> find_num _ <
+
+find_num 0 -> replace_0 ! >
+find_num 1 -> replace_1 ! >
+find_num ! -> find_num ! <
+find_num _ -> delete_replaced _ >
+
+replace_0 0 -> replace_0 0 >
+replace_0 1 -> replace_0 1 >
+replace_0 ! -> replace_0 ! >
+replace_0 _ -> next 0 <
+
+replace_1 0 -> replace_1 0 >
+replace_1 1 -> replace_1 1 >
+replace_1 ! -> replace_1 ! >
+replace_1 _ -> next 1 <
+
+next 0 -> next 0 <
+next 1 -> next 1 <
+next ! -> find_num ! <
+next _ -> ac _ ^
+
+delete_replaced 0 -> ac 0 ^
+delete_replaced 1 -> ac 1 ^
+delete_replaced ! -> delete_replaced _ >
+delete_replaced _ -> ac _ ^

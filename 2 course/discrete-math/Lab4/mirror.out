@@ -1,0 +1,31 @@
+start: read_left
+accept: ac
+reject: rj
+blank: _
+
+read_left 0 -> read_left 0 >
+read_left 1 -> read_left 1 >
+read_left _ -> add_tail _ <
+
+add_tail 0 -> add_zero _ >
+add_tail 1 -> add_one _ >
+add_tail _ -> to_start _ >
+
+add_zero _ -> add_zero2 0 >
+
+add_zero2 0 -> add_zero2 0 >
+add_zero2 1 -> add_zero2 1 >
+add_zero2 _ -> find_tail 0 <
+
+add_one _ -> add_one2 1 >
+
+add_one2 0 -> add_one2 0 >
+add_one2 1 -> add_one2 1 >
+add_one2 _ -> find_tail 1 <
+
+
+find_tail 0 -> find_tail 0 <
+find_tail 1 -> find_tail 1 <
+find_tail _ -> add_tail _ <
+
+to_start _ -> ac _ >

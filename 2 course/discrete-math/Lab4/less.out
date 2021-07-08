@@ -1,0 +1,57 @@
+start: check_left
+accept: ac
+reject: rj
+blank: _
+
+check_left 0 -> move_and_check_right 00 >
+check_left 1 -> move_and_check_right 11 >
+check_left < -> compare_length < >
+
+move_and_check_right 0 -> move_and_check_right 0 >
+move_and_check_right 1 -> move_and_check_right 1 >
+move_and_check_right < -> move_and_check_right < >
+move_and_check_right _ -> check_right _ <
+move_and_check_right 00 -> check_right 00 <
+move_and_check_right 11 -> check_right 11 <
+
+check_right 0 -> move_and_check_left 00 <
+check_right 1 -> move_and_check_left 11 <
+check_right < -> rj < ^
+
+move_and_check_left 0 -> move_and_check_left 0 <
+move_and_check_left 1 -> move_and_check_left 1 <
+move_and_check_left < -> move_and_check_left < <
+move_and_check_left 00 -> check_left 00 >
+move_and_check_left 11 -> check_left 11 >
+
+compare_length 0 -> ac 0 ^
+compare_length 1 -> ac 1 ^
+compare_length 00 -> to_start 00 <
+compare_length 11 -> to_start 11 <
+
+to_start 00 -> to_start 00 <
+to_start 11 -> to_start 11 <
+to_start ! -> to_start ! <
+to_start < -> to_start < <
+to_start _ -> compare _ >
+to_start # -> compare # >
+
+compare 00 -> find_left_00 # >
+compare 11 -> find_left_11 # >
+compare > -> rj > ^
+
+find_left_00 00 -> find_left_00 00 >
+find_left_00 11 -> find_left_00 11 >
+find_left_00 < -> find_left_00_remove_right < >
+
+find_left_11 00 -> find_left_11 00 >
+find_left_11 11 -> find_left_11 11 >
+find_left_11 < -> find_left_11_remove_right < >
+
+find_left_00_remove_right 00 -> to_start ! <
+find_left_00_remove_right 11 -> ac 11 ^
+find_left_00_remove_right ! -> find_left_00_remove_right ! >
+
+find_left_11_remove_right 00 -> rj 00 ^
+find_left_11_remove_right 11 -> to_start ! <
+find_left_11_remove_right ! -> find_left_11_remove_right ! >

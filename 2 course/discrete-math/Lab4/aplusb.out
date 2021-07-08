@@ -1,0 +1,36 @@
+start: read_left
+accept: ac
+reject: rj
+blank: _
+
+read_left 0 -> read_left 0 >
+read_left 1 -> read_left 1 >
+read_left + -> read_right + >
+
+read_right 0 -> read_right 0 >
+read_right 1 -> read_right 1 >
+read_right _ -> sub_right _ <
+
+sub_right 0 -> sub_right 1 <
+sub_right 1 -> to_start_and_add_left 0 <
+sub_right + -> to_end_remove_right _ >
+
+to_start_and_add_left 0 -> to_start_and_add_left 0 <
+to_start_and_add_left 1 -> to_start_and_add_left 1 <
+to_start_and_add_left + -> add_left + <
+
+add_left 0 -> read_left 1 >
+add_left 1 -> add_left 0 <
+add_left _ -> read_left 1 >
+
+to_end_remove_right 0 -> to_end_remove_right 0 >
+to_end_remove_right 1 -> to_end_remove_right 1 >
+to_end_remove_right _ -> remove_right _ <
+
+remove_right 0 -> remove_right _ <
+remove_right 1 -> remove_right _ <
+remove_right _ -> to_start _ <
+
+to_start 0 -> to_start 0 <
+to_start 1 -> to_start 1 <
+to_start _ -> ac _ >

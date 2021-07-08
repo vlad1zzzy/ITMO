@@ -1,0 +1,28 @@
+start: s
+accept: ac
+reject: rj
+blank: _
+
+s ( -> find_close ( >
+s ) -> rj ) ^
+s _ -> ac _ ^
+
+find_close ( -> find_close ( >
+find_close ) -> delete_open ! <
+find_close ! -> find_close ! >
+find_close _ -> rj _ ^
+
+delete_open ( -> repeat ! <
+delete_open ) -> delete_open ) <
+delete_open ! -> delete_open ! <
+delete_open _ -> rj _ ^
+
+repeat ( -> find_close ( >
+repeat ) -> repeat ) <
+repeat ! -> repeat ! <
+repeat _ -> check_all _ >
+
+check_all ( -> find_close ( >
+check_all ) -> rj ) ^
+check_all ! -> check_all ! >
+check_all _ -> ac _ ^

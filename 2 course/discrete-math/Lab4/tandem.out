@@ -1,0 +1,33 @@
+start: to_end
+accept: ac
+reject: rj
+blank: _
+
+to_end 0 -> to_end 0 >
+to_end 1 -> to_end 1 >
+to_end _ -> move_tail _ <
+
+move_tail 0 -> move_zero_to_right _ >
+move_tail 1 -> move_one_to_right _ >
+move_tail _ -> to_start_and_check _ <
+
+move_zero_to_right _ -> to_left 0 <
+move_one_to_right _ -> to_left 1 <
+
+to_left _ ->  to_start _ <
+
+to_start 0 -> to_start 0 <
+to_start 1 -> to_start 1 <
+to_start _ -> to_start_and_check _ <
+
+move_head 0 -> move_zero_to_left _ <
+move_head 1 -> move_one_to_left _ <
+
+move_zero_to_left _ -> to_right 0 >
+move_one_to_left _ -> to_right 1 >
+
+to_right _ ->  to_end _ >
+
+to_start_and_check 0 -> to_start 0 <
+to_start_and_check 1 -> to_start 1 <
+to_start_and_check _ -> to_start_and_check _ <

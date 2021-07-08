@@ -1,0 +1,35 @@
+2
+
+S 0 _ -> S _ > 0 >
+S 1 _ -> S _ > 1 >
+S a _ -> S a ^ _ <
+S o _ -> S o ^ _ <
+
+S a 0 -> add_0 a ^ _ <
+S a 1 -> add_1 a ^ _ <
+S o 0 -> or_0 o ^ _ <
+S o 1 -> or_1 o ^ _ <
+
+add_0 a 0 -> S _ > 0 >
+add_0 a 1 -> S _ > 0 >
+add_0 o 0 -> RJ _ > 0 >
+add_0 o 1 -> RJ _ > 0 >
+
+add_1 a 0 -> S _ > 0 >
+add_1 a 1 -> S _ > 1 >
+add_1 o 0 -> RJ _ > 0 >
+add_1 o 1 -> RJ _ > 0 >
+
+or_0 o 0 -> S _ > 0 >
+or_0 o 1 -> S _ > 1 >
+or_0 a 0 -> RJ _ > 0 >
+or_0 a 1 -> RJ _ > 0 >
+
+or_1 o 0 -> S _ > 1 >
+or_1 o 1 -> S _ > 1 >
+or_0 a 0 -> RJ _ > 0 >
+or_0 a 1 -> RJ _ > 0 >
+
+S _ 0 -> AC 0 ^ _ ^
+S _ 1 -> AC 1 ^ _ ^
+S _ _ -> S _ ^ _ <

@@ -1,0 +1,50 @@
+start: s
+accept: ac
+reject: rj
+blank: _
+
+s 0 -> add_divisor 0 <
+s 1 -> add_divisor 1 <
+s 2 -> add_divisor 2 <
+
+add_divisor _ -> add_left_0 + <
+
+add_left_0 _ -> read_left 0 >
+
+read_left 0 -> read_left 0 >
+read_left 1 -> read_left 1 >
+read_left 2 -> read_left 2 >
+read_left + -> read_right + >
+
+read_right 0 -> read_right 0 >
+read_right 1 -> read_right 1 >
+read_right 2 -> read_right 2 >
+read_right _ -> sub_right _ <
+
+sub_right 0 -> sub_right 2 <
+sub_right 1 -> to_start_and_add_left 0 <
+sub_right 2 -> to_start_and_add_left 1 <
+sub_right + -> to_end_remove_right _ >
+
+to_start_and_add_left 0 -> to_start_and_add_left 0 <
+to_start_and_add_left 1 -> to_start_and_add_left 1 <
+to_start_and_add_left 2 -> to_start_and_add_left 2 <
+to_start_and_add_left + -> add_left + <
+
+add_left 0 -> read_left 1 >
+add_left 1 -> add_left 0 <
+add_left _ -> read_left 1 >
+
+to_end_remove_right 0 -> to_end_remove_right 0 >
+to_end_remove_right 1 -> to_end_remove_right 1 >
+to_end_remove_right 2 -> to_end_remove_right 2 >
+to_end_remove_right _ -> remove_right _ <
+
+remove_right 0 -> remove_right _ <
+remove_right 1 -> remove_right _ <
+remove_right 2 -> remove_right _ <
+remove_right _ -> to_start _ <
+
+to_start 0 -> to_start 0 <
+to_start 1 -> to_start 1 <
+to_start _ -> ac _ >
