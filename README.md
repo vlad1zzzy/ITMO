@@ -11,3 +11,4 @@
     * [Discrete Math](https://github.com/vlad1zzzy/ITMO/tree/master/2%20course/discrete-math)
     * [WEB homeworks](https://github.com/vlad1zzzy/ITMO/tree/master/2%20course/web%20hw's)
     * [OC](https://github.com/vlad1zzzy/ITMO/tree/master/2%20course/OC)
+    * [Matlog](https://https://github.com/vlad1zzzy/ITMO/tree/master/2%20course/matlog)
