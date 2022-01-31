@@ -1,0 +1,55 @@
+html {
+  background-color: #eac095;
+}
+
+.node__root > circle {
+  fill: red;
+}
+
+.node__branch > circle {
+  fill: #517aa6;
+}
+
+.node__leaf > circle {
+  fill: green;
+  transform: scale(1.5);
+}
+
+.node__leaf text {
+  font-weight: bold;
+  fill: black;
+}
+
+text {
+  font-size: 30px;
+}
+
+.input_expression {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.suggests {
+  display: flex;
+  justify-content: center;
+}
+
+.input_expression > input {
+  width: 80vw;
+  text-align: center;
+}
+
+.input_expression > input.warn {
+  background-color: #ffdddd;
+}
+
+.input_expression > input.success {
+  background-color: #84ef49;
+}
+
+.input_expression > .error {
+  color: red;
+  text-align: center;
+}

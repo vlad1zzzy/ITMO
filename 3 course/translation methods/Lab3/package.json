@@ -1,0 +1,15 @@
+{
+  "name": "parsergenerator",
+  "version": "1.0.0",
+  "dependencies": {
+    "@types/antlr4": "^4.7.2"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.0",
+    "antlr4": "4.8.0",
+    "antlr4-tool": "^1.1.1"
+  },
+  "scripts": {
+    "generate-parser": "antlr4-tool -o parser grammar/Grammar.g4"
+  }
+}

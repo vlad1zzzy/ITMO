@@ -1,0 +1,15 @@
+grammar nonll1;
+
+fields [int val];
+
+expr() =>
+        expr() ->
+            expr_(expr0.val) {this.val = expr_1.val;};
+
+expr_(int acc) =>
+        OR ->
+            expr() {this.val = acc;} ->
+                expr_(this.val) {this.val = expr_2.val;}
+        | ε {this.val = acc;} ;
+
+OR: "or";

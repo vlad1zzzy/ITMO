@@ -1,0 +1,44 @@
+grammar logic;
+
+fields [String val];
+
+expr() =>
+        term() ->
+            expr_(term0.val) {this.val = expr_1.val;};
+
+expr_(String acc) =>
+        OR ->
+            term() {this.val = acc + " || " + term1.val;} ->
+                expr_(this.val) {this.val = expr_2.val;}
+        | XOR ->
+            term() {this.val = acc + " ^ " + term1.val;} ->
+                expr_(this.val) {this.val = expr_2.val;}
+        | ε {this.val = acc;} ;
+
+term() =>
+        factor() ->
+            term_(factor0.val) {this.val = term_1.val;};
+
+term_(String acc) =>
+        AND ->
+            factor() {this.val = acc + " && " + factor1.val;} ->
+                term_(this.val) {this.val = term_2.val;}
+        | ε {this.val = acc;} ;
+
+factor() =>
+        VAR {this.val = VAR0;}
+        | OPEN ->
+            expr() -> CLOSE {this.val = "(" + expr1.val + ")";}
+        | NOT ->
+            factor() {this.val = "!" + factor1.val;};
+
+OR: "or";
+XOR: "xor";
+AND: "and";
+NOT: "not";
+
+VAR: "[a-z]";
+
+OPEN: "\\(";
+CLOSE: "\\)";
+

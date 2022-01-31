@@ -1,0 +1,69 @@
+grammar calculator;
+
+fields [int val];
+
+expr() =>
+        term() ->
+            expr_(term0.val) {this.val = expr_1.val;};
+
+expr_(int acc) =>
+        PLUS ->
+            term() {this.val = acc + term1.val;} ->
+                expr_(this.val) {this.val = expr_2.val;}
+        | MINUS ->
+            term() {this.val = acc - term1.val;} ->
+                expr_(this.val) {this.val = expr_2.val;}
+        | ε {this.val = acc;} ;
+
+term() =>
+        power() ->
+            term_(power0.val) {this.val = term_1.val;};
+
+term_(int acc) =>
+        MUL ->
+            power() {this.val = acc * power1.val;} ->
+                term_(this.val) {this.val = term_2.val;}
+        | DIV ->
+            power() {this.val = acc / power1.val;} ->
+                term_(this.val) {this.val = term_2.val;}
+        | ε {this.val = acc;} ;
+
+power() =>
+        factor() ->
+            power_(factor0.val) {this.val = power_1.val;} ;
+
+power_(int acc) =>
+        POW ->
+            power() {this.val = (int) Math.pow(acc, power1.val);}
+        | COMMA ->
+             power() {
+                 int k = acc - power1.val;
+                 int akk1 = k = acc + 1 - power1.val, akk2 = 1;
+                 k++;
+                 for (int i = 2; i <= power1.val; i++, k++) akk1 = akk1 * k;
+                 for (int i = 2; i <= power1.val; i++, k++) akk2 = akk2 * i;
+                 this.val =  akk1 / akk2;
+             }
+        | ε {this.val = acc;} ;
+
+factor() =>
+        NUM {this.val = Integer.parseInt(NUM0);}
+        | OPEN ->
+            expr() ->
+                CLOSE {this.val = expr1.val;}
+        | MINUS -> 
+            factor() {this.val = (-1) * factor1.val;};
+
+POW: "\\*\\*";
+
+PLUS: "\\+";
+MINUS: "-";
+MUL: "\\*";
+DIV: "/";
+COMMA: ",";
+
+NUM: "[0-9]+";
+
+OPEN: "\\(";
+CLOSE: "\\)";
+
