@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width,initial-scale=1'/>
+    <meta content='true' name='HandheldFriendly'/>
+    <meta content='width' name='MobileOptimized'/>
+    <meta content='yes' name='apple-mobile-web-app-capable'/>
+    <title>Upgrade cats</title>
+    <link rel="stylesheet" href="./index.css">
+  </head>
+  <body>
+  <div class="container">
+    <div class="card">
+      <form class="card-form">
+        <div class="card-form__title">Прокачай кота!</div>
+        <div class="card-form__text">
+          Подпишись на рассылку нашего тренера и получи индиидуальную подобранную программу тренировок для своего кота
+        </div>
+        <div class="card-form__numeric">
+          Кот
+          <label>
+            <input type="number" class="card-form__numeric_1 custom-input numeric" min="0" max="20">
+          </label>
+          лет и
+          <label>
+            <input type="number" class="card-form__numeric_2 custom-input numeric" min="0" max="100">
+          </label>
+          кг
+        </div>
+        <div class="card-form__choice">
+          <input class="card-form__choice-inner" id="card-form__choice_1" type="radio" value="Не знаю" name="choice">
+          <label class="card-form__choice_1 custom-input" for="card-form__choice_1">Набор массы</label>
+          <input class="card-form__choice-inner" id="card-form__choice_2" type="radio" value="Не знаю" name="choice">
+          <label class="card-form__choice_2 custom-input" for="card-form__choice_2">Похудение</label>
+          <input class="card-form__choice-inner" id="card-form__choice_3" type="radio" value="Не знаю" name="choice">
+          <label class="card-form__choice_3 custom-input" for="card-form__choice_3">Не знаю</label>
+        </div>
+        <label class="card-form__email">
+          <input class="card-form__email-input custom-input" placeholder="Email (ваш)" type="email"/>
+        </label>
+        <label class="card-form__spam">
+          <input class="card-form__spam-input" type="checkbox">
+          Хочу спам
+        </label>
+        <button class="card-form__button" type="submit">
+          Подсписаться
+        </button>
+      </form>
+      <div class="card-sidebar">
+        <div class="card-img">
+          <img class="card-img__inner" src="../assets/img/pig_01.jpg" alt="cat">
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>

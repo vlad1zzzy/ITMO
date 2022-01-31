@@ -1,0 +1,168 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background: whitesmoke;
+  font-family: 'DM Sans', sans-serif;
+}
+
+input[type=radio] {
+  display: none;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 30px;
+
+  max-width: 1024px;
+  min-height: 100%;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+
+  height: 70vh;
+}
+
+.card-form {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+}
+
+.card-form__title {
+  font-size: 46px;
+  font-weight: bold;
+  color: #252525;
+}
+
+.card-form__text {
+  color: #616161;
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+
+.card-sidebar {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffca24;
+  width: 70%;
+  margin: 0 8rem;
+}
+
+.card-img {
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  max-width: 420px;
+  outline: whitesmoke 1rem solid;
+  transform: translateY(20%);
+}
+
+.card-img__inner {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-form__numeric {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.card-form__choice {
+  display: flex;
+  width: 100%;
+}
+
+.card-form__choice:hover {
+  cursor: pointer;
+  background-color: #FFCA24E6;
+}
+
+#card-form__choice_1:checked ~ .card-form__choice_1,
+#card-form__choice_2:checked ~ .card-form__choice_2,
+#card-form__choice_3:checked ~ .card-form__choice_3 {
+ background-color: rgba(255, 202, 36, 0.9);
+}
+
+.card-form__email {
+  width: 100%;
+}
+
+.card-form__email-input {
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+}
+
+.card-form__spam {
+  margin: 10px 0;
+  color: #979797;
+}
+
+.card-form__button {
+  background-color: #ffca24;
+  border: none;
+  border-radius: 10px;
+  padding: 16px 32px;
+  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.card-form__button:hover {
+  transform: scale(0.99);
+}
+
+.numeric {
+  padding: 16px;
+  width: 120px;
+}
+
+.custom-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e6e7e7;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  height: 38px;
+  flex-grow: 1;
+}
+
+.custom-input:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.57);
+}
+
+.custom-input:focus {
+  outline: 3px solid #afadad;
+}

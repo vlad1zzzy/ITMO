@@ -1,0 +1,82 @@
+* {
+  --card-width-default: 300px;
+  --card-width-book: 600px;
+  --card-height: 450px;
+}
+
+.card {
+  display: inline-block;
+  margin: 8px;
+  outline: solid lightgray 1px;
+  text-align: left;
+  width: var(--card-width-default);
+  border-radius: 2px;
+}
+
+.card:hover {
+  box-shadow: 0 0 20px 8px #d0d0d0;
+}
+
+.card__img {
+  overflow: hidden;
+  width: var(--card-width-default);
+  height: var(--card-width-default);
+}
+
+.card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card__img img:hover {
+  transform: scale(1.03);
+  transition-duration: 2s;
+}
+
+.card__info {
+  margin: 10px auto;
+  width: calc(var(--card-width-default) - 30px);
+}
+
+.card__title {
+  margin: 3px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.card__title-link {
+  text-decoration: none;
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.card__description,
+.card__status {
+  display: none;
+}
+
+.card__description-shortcut > span,
+.card__status-shortcut {
+  display: block;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#menu__toggle:checked ~ .card .card__description,
+#menu__toggle:checked ~ .card .card__status {
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#menu__toggle:checked ~ .card .card__description-shortcut,
+#menu__toggle:checked ~ .card .card__status-shortcut {
+  display: none;
+}
