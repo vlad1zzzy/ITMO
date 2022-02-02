@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Load plotly.js into the DOM -->
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+</head>
+<body>
+<div class="page">
+    <h1>Методы оптимизации</h1>
+    <h2>Лабораторная работа №2</h2>
+    <div class="info">
+        <div class="name">Алгоритмы многомерной минимизации функции</div>
+    </div>
+
+    <h3>Траектории методов для квадратичных функций</h3>
+    <div class="methods">
+        <div class="methodsTitle">Выберите метод</div>
+        <ul>
+            <li id="gradient">Метод градиентного спуска</li>
+            <li  id="gradientGreatDescent">Метод наискорейшего спуска</li>
+            <li id="gradientConjugate">Метод сопряженных градиентов</li>
+        </ul>
+    </div>
+    <div class="functions">
+        <div class="functionsTitle">Выберите функцию</div>
+            <ul>
+                <li id="quad1">24x<sup>2</sup> + 6xy + 14y<sup>2</sup> - 5x + 10y - 11</li>
+                <li id="quad2">64x<sup>2</sup> + 126xy + 64y<sup>2</sup> - 10x + 30y + 13</li>
+                <li id="quad3">35x<sup>2</sup> - 69xy + 35y<sup>2</sup> - 34x + 25y - 24</li>
+            </ul>
+    </div>
+
+    <form id="form">
+        <label for="eps">Выберите точность 10^-</label>
+        <span id="eps-value"></span>
+        <input type="range" min="1" max="8" value="4" class="slider" id="eps">
+        <label>и начальное приближение(</label>
+        <label for="x0">x: </label>
+        <input type="number" id="x0" min="-100" max="100" value="0">
+        <label for="y0">y: </label>
+        <input type="number" id="y0" min="-100" max="100" value="0">
+        <span>)</span>
+        <button type="button" class="btn"><span id="calculate">Рассчитать</span></button>
+    </form>
+    <div class="arrows disabled">
+        <button type="button" class="prev disabled">&larr;</button>
+        <button type="button" class="next">&rarr;</button>
+    </div>
+    <div id='plotly' class="field"><!-- Plotly chart will be drawn inside this DIV --></div>
+
+    <div id="myDiv"></div>
+
+    <div class="result">
+        <div>Полученная&ensp;<strong>точка</strong>&ensp;локального минимума : <span id="dot-min">&ensp;-</span></div>
+        <div>Значение&ensp;<strong>f(x, y)</strong>&ensp;в этой точке : <span id="func-min">&ensp;-</span></div>
+        <div>Количество итераций: <span id="iterations">&ensp;-</span></div>
+    </div>
+    <hr>
+    <h3>Зависимость количества итераций от размерности и числа обусловленности функции</h3>
+    <div id='step' class="field"><!-- Plotly chart will be drawn inside this DIV --></div>
+    <div id='great' class="field"><!-- Plotly chart will be drawn inside this DIV --></div>
+    <div id='conjugate' class="field"><!-- Plotly chart will be drawn inside this DIV --></div>
+</div>
+<script src="js/index.js" type="module"></script>
+<script src="js/quadratic-function.js" type="module"></script>
+<script src="js/gradient.js" type="module"></script>
+<script src="js/draw.js" type="module"></script>
+</body>
+</html>

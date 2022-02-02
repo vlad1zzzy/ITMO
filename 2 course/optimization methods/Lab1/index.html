@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page">
+    <h1>Методы оптимизации</h1>
+    <h2>Лабораторная работа №1</h2>
+    <div class="info">
+        <div class="name">Алгоритмы одномерной минимизации функции</div>
+        <div class="variant">Вариант : <strong>№4</strong></div>
+        <div class="function">Данная функция : f(x) = x - ln(x)</div>
+        <div class="interval">Данный интервал : [ 0.5 ; 4 ]</div>
+    </div>
+
+    <canvas id="myChart"></canvas>
+
+    <div class="arrows disabled">
+        <button type="button" class="prev disabled">&larr;</button>
+        <button type="button" class="next">&rarr;</button>
+    </div>
+
+    <div class="methods">
+        <div class="methodsTitle">Выберите метод</div>
+        <ul>
+            <li id="dichotomy">Метод дихотомии</li>
+            <li id="golden">Метод золотого сечения</li>
+            <li id="fibonacci" class="active">Метод Фибоначчи</li>
+            <li id="parabola">Метод парабол</li>
+            <li id="brent">Комбинированный метод Брента</li>
+        </ul>
+    </div>
+
+    <form id="form">
+        <label for="eps">Выберите точность 10^-</label>
+        <span id="eps-value"></span>
+        <input type="range" min="1" max="8" value="4" class="slider" id="eps">
+        <button type="button" class="btn"><span>Рассчитать</span></button>
+    </form>
+
+    <canvas id="intervals" height="200px"></canvas>
+
+    <div class="datatable"></div>
+
+    <div class="result">
+        <div>Полученная&ensp;<strong>точка</strong>&ensp;локального минимума : <span id="dot-min">&ensp;-</span></div>
+        <div>Значение&ensp;<strong>f(x)</strong>&ensp;в этой точке : <span id="func-min">&ensp;-</span></div>
+    </div>
+
+</div>
+<script src="js/main.js" type="module"></script>
+<script src="js/golden.js" type="module"></script>
+<script src="js/fibonacci.js" type="module"></script>
+<script src="js/parabola.js" type="module"></script>
+<script src="js/chart.js" type="module"></script>
+<script src="js/brent.js" type="module"></script>
+<script src="js/dichotomy.js" type="module"></script>
+<!--<script src="node_modules/chart.js/dist/Chart.min.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script src="js/intervals.js" type="module"></script>
+</body>
+</html>
