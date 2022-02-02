@@ -15,6 +15,7 @@
 
 - ## 3nd course:
     * [Data analisys](https://github.com/vlad1zzzy/ITMO/tree/master/3%20course/data%20analisys)
+    * [Frontend](https://github.com/vlad1zzzy/ITMO/tree/master/3%20course/frontend)
     * [Functional programming (Haskell)](https://github.com/vlad1zzzy/ITMO/tree/master/3%20course/functional%20programming%20(Hakell))
     * [Parallel programming](https://github.com/vlad1zzzy/ITMO/tree/master/3%20course/parallel%20programming)
     * [Translation methods](https://github.com/vlad1zzzy/ITMO/tree/master/3%20course/translation%20methods)
