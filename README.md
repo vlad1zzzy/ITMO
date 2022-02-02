@@ -11,6 +11,7 @@
     * [Discrete Math](https://github.com/vlad1zzzy/ITMO/tree/master/2%20course/discrete-math)
     * [WEB homeworks](https://github.com/vlad1zzzy/ITMO/tree/master/2%20course/web%20hw's)
     * [OC](https://github.com/vlad1zzzy/ITMO/tree/master/2%20course/OC)
+    * [Optimization Methods](https://github.com/vlad1zzzy/ITMO/tree/master/2%20course/optimization%20methods)
     * [Matlog](https://github.com/vlad1zzzy/ITMO/tree/master/2%20course/matlog)
 
 - ## 3nd course:
