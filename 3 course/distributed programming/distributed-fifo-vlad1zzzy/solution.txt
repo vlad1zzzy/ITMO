@@ -1,0 +1,61 @@
+Крюков Владислав
+ProcessLamportMutex
+#actions
+{2 SEND 1} 2, REQ, 1
+{1 SEND 2} 4, OK
+{2 SEND 1} 6, REL
+{2 SEND 1} 8, REQ, 7
+{1 SEND 2} 10, OK
+{1 SEND 2} 2, REQ, 1
+{2 SEND 1} 16, REQ, 15
+{2 SEND 1} 12, REL
+{2 SEND 1} 14, OK
+{1 SEND 2} 18, OK
+{1 SEND 2} 23, REQ, 22
+{2 SEND 1} 25, OK
+#process 1
+0 LockRequest
+11 {1 SEND 2} 2, REQ, 1
+25 {1 RCVD 2} 2, REQ, 1
+36 {1 SEND 2} 4, OK
+119 {1 RCVD 2} 6, REL
+141 {1 RCVD 2} 8, REQ, 7
+152 {1 SEND 2} 10, OK
+254 {1 RCVD 2} 16, REQ, 15
+265 {1 SEND 2} 18, OK
+276 {1 RCVD 2} 12, REL
+287 {1 RCVD 2} 14, OK
+298 Lock
+338 Unlock
+349 {1 SEND 2} 21, REL
+360 LockRequest
+400 {1 SEND 2} 23, REQ, 22
+441 {1 RCVD 2} 25, OK
+461 Lock
+550 Unlock
+590 {1 SEND 2} 27, REL
+#process 2
+0 LockRequest
+11 {2 SEND 1} 2, REQ, 1
+47 {2 RCVD 1} 4, OK
+58 Lock
+97 Unlock
+108 {2 SEND 1} 6, REL
+119 LockRequest
+130 {2 SEND 1} 8, REQ, 7
+163 {2 RCVD 1} 10, OK
+174 Lock
+185 Unlock
+196 {2 SEND 1} 12, REL
+210 {2 RCVD 1} 2, REQ, 1
+221 {2 SEND 1} 14, OK
+232 LockRequest
+243 {2 SEND 1} 16, REQ, 15
+276 {2 RCVD 1} 18, OK
+411 {2 RCVD 1} 23, REQ, 22
+430 {2 SEND 1} 25, OK
+464 Lock
+551 Unlock
+586 {2 SEND 1} 26, REL
+611 LockRequest
+651 {2 SEND 1} 28, REQ, 27
