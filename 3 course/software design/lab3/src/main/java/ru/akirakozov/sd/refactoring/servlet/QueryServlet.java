@@ -14,29 +14,28 @@ import static ru.akirakozov.sd.refactoring.printer.Html.printProduct;
  * @author akirakozov
  */
 public class QueryServlet extends AbstractProductServlet {
-    public QueryServlet(ProductDao productDao) {
+    public QueryServlet(final ProductDao productDao) {
         super(productDao);
     }
 
     @Override
-    protected void doRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String command = request.getParameter("command");
+    protected void doRequest(final HttpServletRequest request, final HttpServletResponse response) throws Exception {
+        final String command = request.getParameter("command");
 
         if ("max".equals(command)) {
-            Optional<Product> maxPriceProduct = productDao.findMaxPriceProduct();
+            final Optional<Product> maxPriceProduct = productDao.findMaxPriceProduct();
             printProduct(maxPriceProduct, "Product with max price: ", response.getWriter());
         } else if ("min".equals(command)) {
-            Optional<Product> minPriceProduct = productDao.findMinPriceProduct();
+            final Optional<Product> minPriceProduct = productDao.findMinPriceProduct();
             printProduct(minPriceProduct, "Product with min price: ", response.getWriter());
         } else if ("sum".equals(command)) {
-            long summaryPrice = productDao.getPricesSum();
+            final long summaryPrice = productDao.getPricesSum();
             printInfo(summaryPrice, "Summary price: ", response.getWriter());
         } else if ("count".equals(command)) {
-            int count = productDao.getProductsCount();
+            final int count = productDao.getProductsCount();
             printInfo(count, "Number of products: ", response.getWriter());
         } else {
             response.getWriter().println("Unknown command: " + command);
         }
     }
-
 }

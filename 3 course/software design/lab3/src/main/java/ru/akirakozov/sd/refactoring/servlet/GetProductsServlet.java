@@ -11,12 +11,12 @@ import static ru.akirakozov.sd.refactoring.printer.Html.printProducts;
  * @author akirakozov
  */
 public class GetProductsServlet extends AbstractProductServlet {
-    public GetProductsServlet(ProductDao productDao) {
+    public GetProductsServlet(final ProductDao productDao) {
         super(productDao);
     }
 
     @Override
-    protected void doRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    protected void doRequest(final HttpServletRequest request, final HttpServletResponse response) throws Exception {
         printProducts(productDao.getProducts(), response.getWriter());
     }
 }

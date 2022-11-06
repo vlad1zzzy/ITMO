@@ -6,7 +6,7 @@ public class Product {
     private final String name;
     private final long price;
 
-    public Product(String name, long price) {
+    public Product(final String name, final long price) {
         this.name = name;
         this.price = price;
     }
@@ -24,10 +24,10 @@ public class Product {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Product product = (Product) o;
+        final Product product = (Product) o;
         return getPrice() == product.price && Objects.equals(getName(), product.name);
     }
 

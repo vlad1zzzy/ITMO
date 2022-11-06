@@ -14,19 +14,19 @@ import static ru.akirakozov.sd.refactoring.dao.UtilsDao.createTable;
  * @author akirakozov
  */
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(final String[] args) throws Exception {
         createTable();
 
-        Server server = new Server(8081);
+        final Server server = new Server(8081);
 
-        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+        final ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
         server.setHandler(context);
 
-        ProductDao productDao = new ProductDao();
+        final ProductDao productDao = new ProductDao();
         context.addServlet(new ServletHolder(new AddProductServlet(productDao)), "/add-product");
-        context.addServlet(new ServletHolder(new GetProductsServlet(productDao)),"/get-products");
-        context.addServlet(new ServletHolder(new QueryServlet(productDao)),"/query");
+        context.addServlet(new ServletHolder(new GetProductsServlet(productDao)), "/get-products");
+        context.addServlet(new ServletHolder(new QueryServlet(productDao)), "/query");
 
         server.start();
         server.join();

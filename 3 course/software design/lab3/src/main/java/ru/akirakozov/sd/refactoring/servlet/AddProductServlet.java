@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
  * @author akirakozov
  */
 public class AddProductServlet extends AbstractProductServlet {
-    public AddProductServlet(ProductDao productDao) {
+    public AddProductServlet(final ProductDao productDao) {
         super(productDao);
     }
 
     @Override
-    protected void doRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String name = request.getParameter("name");
-        long price = Long.parseLong(request.getParameter("price"));
+    protected void doRequest(final HttpServletRequest request, final HttpServletResponse response) throws Exception {
+        final String name = request.getParameter("name");
+        final long price = Long.parseLong(request.getParameter("price"));
 
         productDao.insert(new Product(name, price));
 

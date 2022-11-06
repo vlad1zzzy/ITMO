@@ -9,15 +9,15 @@ import javax.servlet.http.HttpServletResponse;
 public abstract class AbstractProductServlet extends HttpServlet {
     protected final ProductDao productDao;
 
-    public AbstractProductServlet(ProductDao productDao) {
+    public AbstractProductServlet(final ProductDao productDao) {
         this.productDao = productDao;
     }
 
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) {
+    public void doGet(final HttpServletRequest request, final HttpServletResponse response) {
         try {
             doRequest(request, response);
-        } catch (Exception e) {
+        } catch (final Exception e) {
             throw new RuntimeException(e);
         }
 
