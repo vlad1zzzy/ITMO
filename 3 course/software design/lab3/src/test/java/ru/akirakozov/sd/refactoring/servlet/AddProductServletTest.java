@@ -42,13 +42,11 @@ public class AddProductServletTest {
     public void test() throws IOException, SQLException {
         final StringWriter stringWriter = new StringWriter();
         final PrintWriter printer = new PrintWriter(stringWriter);
-
-        when(servletResponse.getWriter()).thenReturn(printer);
-
         final String mockName = "test";
         final long mockPrice = 777;
         final Product expected = new Product(mockName, mockPrice);
 
+        when(servletResponse.getWriter()).thenReturn(printer);
         when(servletRequest.getParameter("name")).thenReturn(mockName);
         when(servletRequest.getParameter("price")).thenReturn(String.valueOf(mockPrice));
 

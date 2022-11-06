@@ -43,9 +43,6 @@ public class GetProductsServletTest {
     public void test() throws IOException, SQLException {
         final StringWriter stringWriter = new StringWriter();
         final PrintWriter printer = new PrintWriter(stringWriter);
-
-        when(servletResponse.getWriter()).thenReturn(printer);
-
         final List<Product> mock = Arrays.asList(
                 new Product("test1", 666),
                 new Product("test2", 777),
@@ -55,11 +52,10 @@ public class GetProductsServletTest {
                 .stream()
                 .map(p -> String.format("%s\t%d</br>", p.getName(), p.getPrice()))
                 .collect(Collectors.joining());
-
         final String htmlFormat = "<html><body>%s</body></html>";
-
         final String expected = String.format(htmlFormat, htmlBody);
 
+        when(servletResponse.getWriter()).thenReturn(printer);
         when(productDao.getProducts()).thenReturn(mock);
 
         servlet.doGet(servletRequest, servletResponse);
