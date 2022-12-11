@@ -22,3 +22,6 @@
     * [Translation methods](https://github.com/vlad1zzzy/ITMO/tree/master/3%20course/translation%20methods)
     * [Machine learning](https://github.com/vlad1zzzy/ITMO/tree/master/3%20course/machine%20learning)
     * [Distributed programming](https://github.com/vlad1zzzy/ITMO/tree/master/3%20course/distributed%20programming)
+    
+- ## 4th course:
+    * [Software design](https://github.com/vlad1zzzy/ITMO/tree/master/3%20course/software%20design)
